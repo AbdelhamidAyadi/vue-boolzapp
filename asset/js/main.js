@@ -163,11 +163,17 @@ var app = new Vue({
                     }
                 ],
             }
-        ]
+        ],
+        currentChatIndex: 0 ,
         
        
     },
     methods: {
-       
+        currentChat: function(index) {
+            this.currentChatIndex = index;
+            console.log(this.currentChatIndex);
+       }
+
+
     }
 });

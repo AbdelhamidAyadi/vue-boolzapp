@@ -22,8 +22,7 @@
             <div class="container">
                 <div class="row h-100">
                     <div class="col-4">
-                        <div
-                            class="user_part d-flex align-items-center justify-content-between ">
+                        <div class="user_part d-flex align-items-center justify-content-between ">
                             <div class="d-flex align-items-center user_picture  ">
                                 <img src="./asset/img/avatar_io.jpg" class="rounded-circle" alt="user profile picture">
                                 <p class="m-0">Sofia</p>
@@ -54,16 +53,16 @@
 
 
 
-                        <div v-for="contact in contacts">
-                            <div class="contacts_part">
+                        <div v-for="(element, index) in contacts" >
+                            <div class="contacts_part" @click="currentChat(index)">
 
                                 <div class="contacts_picture_part">
-                                    <img v-bind:src=`./asset/img/avatar${contact.avatar}.jpg` class="rounded-circle "
+                                    <img v-bind:src=`./asset/img/avatar${element.avatar}.jpg` class="rounded-circle "
                                         alt="user profile picture">
                                 </div>
                                 <div class="contacts_text_part">
                                     <div>
-                                        <p>{{contact.name}}</p>
+                                        <p>{{element.name}}</p>
                                         <p>Ultimo messaggio inviato</p>
                                     </div>
                                     <div>
@@ -85,12 +84,12 @@
                             <div class="chat_top_part">
 
                                 <div class="chat_picture_part">
-                                    <img src="./asset/img/avatar_1.jpg" class="rounded-circle "
+                                    <img v-bind:src=`./asset/img/avatar${contacts[currentChatIndex].avatar}.jpg` class="rounded-circle "
                                         alt="user profile picture">
                                 </div>
                                 <div class="chat_top_text_part">
                                     <div>
-                                        <p>Michele</p>
+                                        <p>{{contacts[currentChatIndex].name}}</p>
                                         <p>Ultimo accesso oggi alle 12:00</p>
                                     </div>
                                     <div>
@@ -102,31 +101,19 @@
 
 
                             </div>
-                            <div class="chat_middle_part">
-                                <div class="sent">
-                                   <div>
-                                    <div>Hai portato a spasso il cane?</div>
-                                    <div>15:30</div>
-                                   </div>
-                                </div>
-                                <div class="sent">
-                                    <div>
-                                        <div>Ricordati di stendere i panni</div>
-                                        <div>15:50</div>
-                                    </div>
-                                </div>
-                                <div class="received">
-                                    <div>
-                                        <div>
-                                            Tutto fatto!
-                                        </div>
-                                        <div>
-                                            16:15
+                            
+                                <div class="chat_middle_part">
+                                    <div v-for="(element, index) in contacts[currentChatIndex].messages">
+                                        <div v-bind:class="(contacts[currentChatIndex].messages[index].status == 'sent') ? 'sent' : 'received' ">
+                                            <div>
+                                                <div>{{contacts[currentChatIndex].messages[index].message}}</div>
+                                                <div>{{contacts[currentChatIndex].messages[index].date}}</div>
+                                            </div>
                                         </div>
                                     </div>
-
+    
                                 </div>
-                            </div>
+                            
                             <div class="chat_bottom_part">
                                 <i class="fa-regular fa-face-smile"></i>
                                 <input type="text" placeholder="Scrivi un messaggio" name="search" id="">
