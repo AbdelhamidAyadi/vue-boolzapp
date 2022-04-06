@@ -24,6 +24,7 @@
     padding: 0;
 }
 
+
 .user_part {
     height: 60px;
     padding: 5px 10px;
@@ -80,6 +81,7 @@
 }
 
 .search_part {
+    height:40px;
     display: flex;
     background-color: white;
     margin: 5px 10px;
@@ -87,6 +89,9 @@
 }
 
 .search_part i {
+    height:100%;
+    display: flex;
+    align-items: center;
     padding: 5px 10px;
     color: #b0b1b3;
     border: 1px solid #b0b1b3;
@@ -109,6 +114,10 @@
     padding: 5px 10px;
     cursor: pointer;
     
+}
+.contacts_part_container{
+    overflow:auto;
+    height:calc( 100% - 170px)
 }
 
 .contacts_picture_part {
@@ -198,6 +207,8 @@
     padding: 50px 100px;
     background-image:url(../img/mine.jpg);
     background-repeat:repeat;
+    overflow-y:auto ;
+    
 }
 .sent{
     display: flex;

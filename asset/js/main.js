@@ -1,13 +1,11 @@
 var app = new Vue({
     el: '#root',
     data: {
-        contacts: [
-            {
+        contacts: [{
                 name: 'Michele',
                 avatar: '_1',
                 visible: true,
-                messages: [
-                    {
+                messages: [{
                         date: '10/01/2020 15:30:55',
                         message: 'Hai portato a spasso il cane?',
                         status: 'sent'
@@ -28,8 +26,7 @@ var app = new Vue({
                 name: 'Fabio',
                 avatar: '_2',
                 visible: true,
-                messages: [
-                    {
+                messages: [{
                         date: '20/03/2020 16:30:00',
                         message: 'Ciao come stai?',
                         status: 'sent'
@@ -50,8 +47,7 @@ var app = new Vue({
                 name: 'Samuele',
                 avatar: '_3',
                 visible: true,
-                messages: [
-                    {
+                messages: [{
                         date: '28/03/2020 10:10:40',
                         message: 'La Marianna va in campagna',
                         status: 'received'
@@ -72,8 +68,7 @@ var app = new Vue({
                 name: 'Alessandro B.',
                 avatar: '_4',
                 visible: true,
-                messages: [
-                    {
+                messages: [{
                         date: '10/01/2020 15:30:55',
                         message: 'Lo sai che ha aperto una nuova pizzeria?',
                         status: 'sent'
@@ -89,8 +84,7 @@ var app = new Vue({
                 name: 'Alessandro L.',
                 avatar: '_5',
                 visible: true,
-                messages: [
-                    {
+                messages: [{
                         date: '10/01/2020 15:30:55',
                         message: 'Ricordati di chiamare la nonna',
                         status: 'sent'
@@ -106,8 +100,7 @@ var app = new Vue({
                 name: 'Claudia',
                 avatar: '_6',
                 visible: true,
-                messages: [
-                    {
+                messages: [{
                         date: '10/01/2020 15:30:55',
                         message: 'Ciao Claudia, hai novità?',
                         status: 'sent'
@@ -128,8 +121,7 @@ var app = new Vue({
                 name: 'Federico',
                 avatar: '_7',
                 visible: true,
-                messages: [
-                    {
+                messages: [{
                         date: '10/01/2020 15:30:55',
                         message: 'Fai gli auguri a Martina che è il suo compleanno!',
                         status: 'sent'
@@ -145,8 +137,7 @@ var app = new Vue({
                 name: 'Davide',
                 avatar: '_8',
                 visible: true,
-                messages: [
-                    {
+                messages: [{
                         date: '10/01/2020 15:30:55',
                         message: 'Ciao, andiamo a mangiare la pizza stasera?',
                         status: 'received'
@@ -164,15 +155,90 @@ var app = new Vue({
                 ],
             }
         ],
-        currentChatIndex: 0 ,
-        
-       
+        currentChatIndex: 0,
+
+        newMessage: ''
+
+
     },
     methods: {
-        currentChat: function(index) {
+        currentChat: function (index) {
             this.currentChatIndex = index;
             console.log(this.currentChatIndex);
-       }
+        },
+
+        newMessageF: function () {
+            const d = new Date();
+            let c = d.getDate();
+            let e = d.getMonth() + 1;
+            let f = d.getFullYear();
+            let g = d.getHours();
+            let h = d.getMinutes();
+            let i = d.getSeconds();
+
+            if (c<10) {
+                c = "0" + c;
+            }
+            if (e<10) {
+                e = "0" + e;
+            }
+            if (g<10) {
+                g = "0" + g;
+            }
+            if (h<10) {
+                h = "0" + h;
+            }
+            if (i<10) {
+                i = "0" + i;
+            }
+            let full = c + "/" + e + "/" + f + " " + g + ":" + h + ":" + i;
+            
+
+            this.contacts[this.currentChatIndex].messages.push({
+                    date: full,
+                    message: this.newMessage,
+                    status: 'sent'
+                },
+
+            )
+            this.newMessage = ''
+            setTimeout(this.messageReplyF, 3000)
+        },
+        messageReplyF: function (){
+            const d = new Date();
+            let c = d.getDate();
+            let e = d.getMonth() + 1;
+            let f = d.getFullYear();
+            let g = d.getHours();
+            let h = d.getMinutes();
+            let i = d.getSeconds();
+
+            if (c<10) {
+                c = "0" + c;
+            }
+            if (e<10) {
+                e = "0" + e;
+            }
+            if (g<10) {
+                g = "0" + g;
+            }
+            if (h<10) {
+                h = "0" + h;
+            }
+            if (i<10) {
+                i = "0" + i;
+            }
+            let full = c + "/" + e + "/" + f + " " + g + ":" + h + ":" + i;
+
+            this.contacts[this.currentChatIndex].messages.push({
+                date: full,
+                message: 'Ok',
+                status: 'received'
+            },
+
+        )
+        },
+
 
 
     }

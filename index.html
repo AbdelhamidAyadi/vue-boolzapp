@@ -53,24 +53,26 @@
 
 
 
-                        <div v-for="(element, index) in contacts" >
-                            <div class="contacts_part" @click="currentChat(index)">
-
-                                <div class="contacts_picture_part">
-                                    <img v-bind:src=`./asset/img/avatar${element.avatar}.jpg` class="rounded-circle "
-                                        alt="user profile picture">
-                                </div>
-                                <div class="contacts_text_part">
-                                    <div>
-                                        <p>{{element.name}}</p>
-                                        <p>Ultimo messaggio inviato</p>
+                        <div class="contacts_part_container">
+                            <div v-for="(element, index) in contacts" >
+                                <div class="contacts_part" @click="currentChat(index)">
+    
+                                    <div class="contacts_picture_part">
+                                        <img v-bind:src=`./asset/img/avatar${element.avatar}.jpg` class="rounded-circle "
+                                            alt="user profile picture">
                                     </div>
-                                    <div>
-                                        12:00
+                                    <div class="contacts_text_part">
+                                        <div>
+                                            <p>{{element.name}}</p>
+                                            <p>Ultimo messaggio inviato</p>
+                                        </div>
+                                        <div>
+                                            12:00
+                                        </div>
                                     </div>
+    
+    
                                 </div>
-
-
                             </div>
                         </div>
 
@@ -116,7 +118,7 @@
                             
                             <div class="chat_bottom_part">
                                 <i class="fa-regular fa-face-smile"></i>
-                                <input type="text" placeholder="Scrivi un messaggio" name="search" id="">
+                                <input type="text" placeholder="Scrivi un messaggio"  @keyup.enter="newMessageF" v-model="newMessage">
                                 <i class="fa-solid fa-microphone"></i>
                             </div>
                         </div>
