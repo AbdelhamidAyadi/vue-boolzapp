@@ -157,7 +157,9 @@ var app = new Vue({
         ],
         currentChatIndex: 0,
 
-        newMessage: ''
+        newMessage: '',
+
+        input: '',
 
 
     },
@@ -176,23 +178,23 @@ var app = new Vue({
             let h = d.getMinutes();
             let i = d.getSeconds();
 
-            if (c<10) {
+            if (c < 10) {
                 c = "0" + c;
             }
-            if (e<10) {
+            if (e < 10) {
                 e = "0" + e;
             }
-            if (g<10) {
+            if (g < 10) {
                 g = "0" + g;
             }
-            if (h<10) {
+            if (h < 10) {
                 h = "0" + h;
             }
-            if (i<10) {
+            if (i < 10) {
                 i = "0" + i;
             }
             let full = c + "/" + e + "/" + f + " " + g + ":" + h + ":" + i;
-            
+
 
             this.contacts[this.currentChatIndex].messages.push({
                     date: full,
@@ -204,7 +206,7 @@ var app = new Vue({
             this.newMessage = ''
             setTimeout(this.messageReplyF, 3000)
         },
-        messageReplyF: function (){
+        messageReplyF: function () {
             const d = new Date();
             let c = d.getDate();
             let e = d.getMonth() + 1;
@@ -213,31 +215,43 @@ var app = new Vue({
             let h = d.getMinutes();
             let i = d.getSeconds();
 
-            if (c<10) {
+            if (c < 10) {
                 c = "0" + c;
             }
-            if (e<10) {
+            if (e < 10) {
                 e = "0" + e;
             }
-            if (g<10) {
+            if (g < 10) {
                 g = "0" + g;
             }
-            if (h<10) {
+            if (h < 10) {
                 h = "0" + h;
             }
-            if (i<10) {
+            if (i < 10) {
                 i = "0" + i;
             }
             let full = c + "/" + e + "/" + f + " " + g + ":" + h + ":" + i;
 
             this.contacts[this.currentChatIndex].messages.push({
-                date: full,
-                message: 'Ok',
-                status: 'received'
-            },
+                    date: full,
+                    message: 'Ok',
+                    status: 'received'
+                },
 
-        )
+            )
         },
+        contactsFilter: function () {
+            let inputUp = this.input.toUpperCase();
+
+            this.contacts.forEach(element => {
+                let nameUp = element.name.toUpperCase();
+                if (nameUp.includes(inputUp)) {
+                    element.visible = true;
+                } else {
+                    element.visible = false;
+                }
+            });
+        }
 
 
 

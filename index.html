@@ -18,10 +18,10 @@
 
 
     <div id="root">
-        <div class="body d-flex align-items-center">
+        <div class="body d-flex align-items-center py-3">
             <div class="container">
-                <div class="row h-100">
-                    <div class="col-4">
+                <div class="row h-100 ">
+                    <div class="col-4 h-100">
                         <div class="user_part d-flex align-items-center justify-content-between ">
                             <div class="d-flex align-items-center user_picture  ">
                                 <img src="./asset/img/avatar_io.jpg" class="rounded-circle" alt="user profile picture">
@@ -47,7 +47,7 @@
 
                         <div class="search_part">
                             <label><i class="fa-solid fa-magnifying-glass"></i></label>
-                            <input type="text" placeholder="Cerca o inizia una nuova chat" name="search" id="">
+                            <input type="text" v-model="input" @keyup="contactsFilter(input)" placeholder="Cerca o inizia una nuova chat" name="search" id="">
                         </div>
 
 
@@ -55,7 +55,7 @@
 
                         <div class="contacts_part_container">
                             <div v-for="(element, index) in contacts" >
-                                <div class="contacts_part" @click="currentChat(index)">
+                                <div class="contacts_part" v-if="element.visible" @click="currentChat(index)">
     
                                     <div class="contacts_picture_part">
                                         <img v-bind:src=`./asset/img/avatar${element.avatar}.jpg` class="rounded-circle "
@@ -81,7 +81,7 @@
 
 
                     </div>
-                    <div class="col-8">
+                    <div class="col-8 h-100">
                         <div class="h-100">
                             <div class="chat_top_part">
 
