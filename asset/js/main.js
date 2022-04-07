@@ -162,6 +162,7 @@ var app = new Vue({
         input: '',
 
 
+
     },
     methods: {
         currentChat: function (index) {
@@ -251,7 +252,31 @@ var app = new Vue({
                     element.visible = false;
                 }
             });
+        },
+        showDetails: function (index){
+            let popup = document.querySelectorAll(".popup")
+            
+                popup[index].classList.toggle("d-none")
+                
+            
+            
+           
+            
+            
+            
+
+        },
+        removeMessage: function (index){
+            this.contacts[this.currentChatIndex].messages.splice(index, 1)
+            let popup = document.querySelectorAll(".popup")
+            for (let i = 0; i < popup.length; i++) {
+                popup[i].classList.add("d-none")
+                
+            }
+            
+            
         }
+
 
 
 

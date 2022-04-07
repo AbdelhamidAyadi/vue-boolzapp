@@ -222,6 +222,11 @@
     margin: 10px 0;
     background-color:#d8f8bf;
     font-weight: 600;
+    
+}
+.message{
+    box-shadow: 5px 10px 5px #888888;
+    position: relative;
 }
 .sent div:nth-child(2){
     margin: 0;
@@ -272,4 +277,19 @@
 }
 .chat_bottom_part i{
     padding: 0 30px;
+}
+.popup{
+    background-color: aliceblue;
+    box-shadow: 5px 5px 5px #888888;
+    position:absolute;
+    z-index: 1;
+    right: 20px;
+    bottom: -40px;
+    padding: 15px;
+    font-weight: 400;
+    border-radius: 10px;
+    border: 1px solid rgb(215, 213, 213);
+    cursor: pointer;
+
+           
 }
