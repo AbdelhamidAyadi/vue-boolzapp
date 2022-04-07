@@ -268,11 +268,7 @@ var app = new Vue({
         },
         removeMessage: function (index){
             this.contacts[this.currentChatIndex].messages.splice(index, 1)
-            let popup = document.querySelectorAll(".popup")
-            for (let i = 0; i < popup.length; i++) {
-                popup[i].classList.add("d-none")
-                
-            }
+            
             
             
         }

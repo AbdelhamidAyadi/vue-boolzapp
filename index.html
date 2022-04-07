@@ -106,11 +106,11 @@
                             
                                 <div class="chat_middle_part">
                                     <div v-for="(element, index) in contacts[currentChatIndex].messages">
-                                        <div @click="showDetails(index)"  v-bind:class="(contacts[currentChatIndex].messages[index].status == 'sent') ? 'sent' : 'received' ">
+                                        <div   v-bind:class="(contacts[currentChatIndex].messages[index].status == 'sent') ? 'sent' : 'received' ">
                                             <div class="message">
                                                 <div>{{contacts[currentChatIndex].messages[index].message}}</div>
                                                 <div>{{contacts[currentChatIndex].messages[index].date}}</div>
-                                                <span class="popup d-none" id="details">
+                                                <span class="popup" id="details">
                                                     <p class="m-0 p-1">Message info</p>
                                                     <p class="m-0 p-1" @click="removeMessage(index)">Delete message</p>
                                                 </span>
